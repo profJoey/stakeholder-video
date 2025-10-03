@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Events | Joey Azoulai</title>
+    <meta name="description" content="Events and workshops by Joey Azoulai." />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Mooli&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../styles.css" />
+
+    <!-- Fathom -->
+    <script
+      src="https://cdn.usefathom.com/script.js"
+      data-site="ESHIBGXW"
+      defer
+    ></script>
+    <!-- / Fathom -->
+
+    <!-- EmailJS -->
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"
+    ></script>
+    <script type="text/javascript">
+      (function () {
+        emailjs.init({
+          publicKey: "E-4VTnERxwB-Q9iAn",
+        });
+      })();
+    </script>
+    <link
+      href="https://api.mapbox.com/mapbox-gl-js/v3.14.0/mapbox-gl.css"
+      rel="stylesheet"
+    />
+    <script src="https://api.mapbox.com/mapbox-gl-js/v3.14.0/mapbox-gl.js"></script>
+    <!-- <script src="../script.js"></script> -->
+    <script src="../scripts/tracking-events.js"></script>
+    <script src="../scripts/url-parameters.js"></script>
+    <style>
+      body.event {
+        padding: 0;
+        display: flex;
+        box-sizing: border-box;
+        width: 100%;
+        margin: 0;
+        height: auto;
+        font-family: "Lato", sans-serif;
+        color: #d3d3d3;
+        font-size: 16px;
+      }
+      body.event > * {
+        opacity: 1;
+      }
+      .event-section {
+        width: 80%;
+        display: grid;
+        justify-items: center;
+        align-items: center;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: repeat(7, auto);
+        grid-template-areas:
+          "event-title event-title"
+          "event-media event-media"
+          "event-details event-form"
+          "event-description event-description"
+          "event-host event-host";
+      }
+      .event-title {
+        grid-area: event-title;
+        text-align: center;
+        font-size: 3rem;
+        max-width: 700px;
+        margin-bottom: 4vh;
+      }
+      .event-title h2 {
+        font-size: 2rem;
+      }
+      .event-form {
+        grid-area: event-form;
+      }
+      .event-form form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .event-form label {
+        display: block;
+        text-align: center;
+        margin-bottom: 0.5rem;
+        font-weight: bold;
+        margin-top: 1rem;
+      }
+      .event-form input {
+        width: 100%;
+        height: 2rem;
+        padding: 0.5rem 1rem;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+      .event-description {
+        grid-area: event-description;
+        max-width: 600px;
+        margin-top: 2rem;
+      }
+      .event-description h3 {
+        text-align: center;
+        font-size: 2rem;
+        margin-top: 1rem;
+      }
+      .event-details {
+        grid-area: event-details;
+      }
+      .event-details-list {
+        list-style: none;
+        margin-left: 0;
+        padding-inline-start: 0;
+      }
+      label {
+        color: #c0b27a;
+        font-size: 1.5rem;
+      }
+      .event-details ul {
+        list-style: none;
+        margin-left: 0;
+      }
+      .event-media {
+        grid-area: event-media;
+        display: flex;
+        width: 100%;
+        height: 35vh;
+      }
+      .event-media img {
+        height: 100%;
+        width: auto;
+      }
+      #map {
+        margin-left: 1rem;
+        width: 100%;
+        height: 100%;
+      }
+      .event-host {
+        grid-area: event-host;
+        max-width: 600px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 3rem;
+      }
+      .event-host img {
+        width: auto;
+        height: 30vh;
+        border-radius: 8px;
+        margin-bottom: 1rem;
+        border: 1px solid #c0b27a;
+      }
+      .event-footer {
+        width: 100%;
+        height: 20vh;
+        background-color: #c0b27a;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #1a1a1a;
+      }
+      .event-footer p {
+        font-weight: 400;
+      }
+      .event-footer a {
+        color: #1a1a1a;
+        font-weight: 700;
+      }
+      a.important-link {
+        color: #a01414;
+        font-weight: 700;
+      }
+      p {
+        line-height: 1.5;
+      }
+      @media (max-width: 768px) {
+        .event-section {
+          width: 95%;
+          margin: 0 2rem;
+          grid-template-columns: 1fr;
+          grid-template-rows: auto;
+          grid-template-areas:
+            "event-title"
+            "event-media"
+            "event-details"
+            "event-form"
+            "event-description"
+            "event-host";
+        }
+        .event-media {
+          flex-direction: column;
+          height: auto;
+        }
+        .event-media img {
+          width: 100%;
+          height: auto;
+          max-width: 100%;
+        }
+        #map {
+          margin-left: 0;
+          margin-top: 1rem;
+          height: 30vh;
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body class="event">
+    <div class="event-section">
+      <div class="event-title">
+        <h1 class="hero-text">You're Invited!</h1>
+        <h2>
+          How Nonprofit EDs Nurture a "Media Capture Culture" in their
+          Organizations
+        </h2>
+      </div>
+
+      <div class="event-details">
+        <h3>Event Details:</h3>
+        <ul class="event-details-list">
+          <li>Thursday, October 2</li>
+          <li>5:00 PM - 7:00 PM</li>
+          <li>370 Jay St. Downtown Brooklyn</li>
+        </ul>
+      </div>
+      <div class="event-form">
+        <form
+          id="emailForm"
+          onsubmit="fathom.trackEvent('email-form-submit-events');"
+        >
+          <label for="email">Join us at NYU's Brooklyn Campus! </label>
+          <input
+            type="email"
+            id="email"
+            placeholder="Enter your email"
+            name="user_email"
+            required
+          />
+
+          <button
+            class="buy-btn"
+            style="background-color: #de4343"
+            type="submit"
+          >
+            <div class="buy-btn-text">
+              <img
+                src="https://azoulai.s3.us-east-2.amazonaws.com/icons/calendar_month_24dp_000_FILL0_wght400_GRAD0_opsz24.svg"
+                alt="Cart Icon"
+                class="cart-icon"
+              />
+              <span class="button-text">Get your invite!</span>
+            </div>
+            <span class="button-subtext">And emails about future events</span>
+          </button>
+        </form>
+      </div>
+      <div class="event-description">
+        <!-- <h3>
+          Is marketing everyone's job now?
+        </h3> -->
+        <p>
+          Getting attention from funders, donors, and volunteers means creating
+          a constant stream of media across multiple channels. To be successful,
+          your marketing and communications team needs support from the entire
+          organization. Find out how EDs are providing that support by creating
+          a culture of media capture and sharing.
+        </p>
+      </div>
+      <div class="event-media">
+        <img
+          src="https://azoulai.s3.us-east-2.amazonaws.com/370-Jay-Horizontal-2.jpg"
+          alt="NYU Brooklyn Campus"
+          class="image-sample"
+        />
+        <div id="map"></div>
+      </div>
+      <div class="event-host">
+        <h3>Hosted by: Joey Azoulai</h3>
+        <img
+          src="https://azoulai.s3.us-east-2.amazonaws.com/joey.jpg"
+          alt="Joey Azoulai"
+          class="image-sample"
+        />
+        <p>Joey is a Content Strategist and Video Producer based in New York City. He is the founder of **Impact Video Services**, a creative agency dedicated to making high-quality video production accessible to nonprofits of all sizes.</p>
+        <p>Previously, Joey served as Director of Media & Content at digital agency Studion, where he led projects for clients such as Harvard Law, Bridgespan, Microsoft, and Goodwill. His work has consistently focused on helping mission-driven organizations engage audiences, secure funding, and demonstrate impact.</p>
+        <p>Joey’s career spans television and film production, classroom teaching, and leading a media team that developed innovative digital programs to support workforce development and education. He also teaches media production and technology at New York University and Columbia University’s Teachers College, where he mentors emerging professionals in the field.</p>
+    </div>
+    </div>
+    <div class="event-footer">
+      <p>
+        Questions? Message me on
+        <a
+          href="https://www.linkedin.com/in/joeyazoulai/"
+          onclick="trackEvent('events-linkedin-message-click');"
+          >LinkedIn</a
+        >.
+      </p>
+      <button
+        class="buy-btn"
+        style="margin-left: 2rem; background-color: #de4343"
+        type="submit"
+        onclick="window.open('https://joeyazoulai.com', '_blank');"
+        onsubmit="trackEvent('events-website-click');"
+      >
+        <div class="buy-btn-text">
+          <img
+            src="https://azoulai.s3.us-east-2.amazonaws.com/icons/art_track_24dp_000_FILL0_wght400_GRAD0_opsz24.svg"
+            alt="Cart Icon"
+            class="cart-icon"
+          />
+          <span class="button-text">Visit my website</span>
+        </div>
+        <span class="button-subtext">To see examples of my work</span>
+      </button>
+    </div>
+    
+    <script type="text/javascript">
+      // document
+      //   .getElementById("emailForm")
+      //   .addEventListener("submit", function (event) {
+      //     event.preventDefault(); // Prevent default form submission
+
+      //     trackEvent("events-form-submit");
+
+      //     var emailParams = {
+      //       user_email: document.getElementById("email").value,
+      //     };
+
+      //     emailjs.send("service_8zrsopo", "template_g68y533", emailParams).then(
+      //       function (response) {
+      //         alert("SUCCESS!", response.status, response.text);
+      //       },
+      //       function (error) {
+      //         alert("FAILED...", error);
+      //       }
+      //     );
+      //   });
+      document
+  .getElementById("emailForm")
+  .addEventListener("submit", function (event) {
+    event.preventDefault(); // Prevent default form submission
+
+    trackEvent("events-form-submit");
+
+    var emailParams = {
+      user_email: document.getElementById("email").value,
+    };
+
+    emailjs.send("service_8zrsopo", "template_g68y533", emailParams).then(
+      function (response) {
+        // Success: Update label and hide form elements
+        const label = document.querySelector("label[for='email']");
+        const emailInput = document.getElementById("email");
+        const submitButton = emailInput.parentElement.querySelector('.buy-btn');
+        
+        // Update label with success message
+        label.innerHTML = `
+          <span style="
+            color: #4CAF50;
+            font-weight: bold;
+            font-size: 1.2rem;
+            display: block;
+            padding: 1rem;
+            background-color: rgba(76, 175, 80, 0.1);
+            border: 2px solid #4CAF50;
+            border-radius: 8px;
+            margin-top: 1rem;
+          ">
+            ✅ Received! Look out for an email soon!
+          </span>
+        `;
+        
+        // Hide form elements
+        emailInput.style.display = "none";
+        submitButton.style.display = "none";
+      },
+      function (error) {
+        alert("FAILED...", error);
+      }
+    );
+  });
+    </script>
+    <script>
+      mapboxgl.accessToken =
+        "pk.eyJ1IjoicmljaGtuaWNrZXJib2NrZXIiLCJhIjoiY2t4MHN6eHdmMThhNzJvbXhkZ3I4YXIycCJ9.gOf89ht_pGXklZzNHfkb8g";
+      const map = new mapboxgl.Map({
+        container: "map", // container ID
+        center: [-73.98748911912367, 40.693240353422574],
+        zoom: 15,
+        interactive: false,
+      });
+    </script>
+  </body>
+</html>
