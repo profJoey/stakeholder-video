@@ -293,10 +293,28 @@
           alt="Joey Azoulai"
           class="image-sample"
         />
-        <p>Joey is a Content Strategist and Video Producer based in New York City. He is the founder of **Impact Video Services**, a creative agency dedicated to making high-quality video production accessible to nonprofits of all sizes.</p>
-        <p>Previously, Joey served as Director of Media & Content at digital agency Studion, where he led projects for clients such as Harvard Law, Bridgespan, Microsoft, and Goodwill. His work has consistently focused on helping mission-driven organizations engage audiences, secure funding, and demonstrate impact.</p>
-        <p>Joey’s career spans television and film production, classroom teaching, and leading a media team that developed innovative digital programs to support workforce development and education. He also teaches media production and technology at New York University and Columbia University’s Teachers College, where he mentors emerging professionals in the field.</p>
-    </div>
+        <p>
+          Joey is a Content Strategist and Video Producer based in New York
+          City. He is the founder of **Impact Video Services**, a creative
+          agency dedicated to making high-quality video production accessible to
+          nonprofits of all sizes.
+        </p>
+        <p>
+          Previously, Joey served as Director of Media & Content at digital
+          agency Studion, where he led projects for clients such as Harvard Law,
+          Bridgespan, Microsoft, and Goodwill. His work has consistently focused
+          on helping mission-driven organizations engage audiences, secure
+          funding, and demonstrate impact.
+        </p>
+        <p>
+          Joey’s career spans television and film production, classroom
+          teaching, and leading a media team that developed innovative digital
+          programs to support workforce development and education. He also
+          teaches media production and technology at New York University and
+          Columbia University’s Teachers College, where he mentors emerging
+          professionals in the field.
+        </p>
+      </div>
     </div>
     <div class="event-footer">
       <p>
@@ -325,7 +343,7 @@
         <span class="button-subtext">To see examples of my work</span>
       </button>
     </div>
-    
+
     <script type="text/javascript">
       // document
       //   .getElementById("emailForm")
@@ -348,25 +366,26 @@
       //     );
       //   });
       document
-  .getElementById("emailForm")
-  .addEventListener("submit", function (event) {
-    event.preventDefault(); // Prevent default form submission
+        .getElementById("emailForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault(); // Prevent default form submission
 
-    trackEvent("events-form-submit");
+          trackEvent("events-form-submit");
 
-    var emailParams = {
-      user_email: document.getElementById("email").value,
-    };
+          var emailParams = {
+            user_email: document.getElementById("email").value,
+          };
 
-    emailjs.send("service_8zrsopo", "template_g68y533", emailParams).then(
-      function (response) {
-        // Success: Update label and hide form elements
-        const label = document.querySelector("label[for='email']");
-        const emailInput = document.getElementById("email");
-        const submitButton = emailInput.parentElement.querySelector('.buy-btn');
-        
-        // Update label with success message
-        label.innerHTML = `
+          emailjs.send("service_8zrsopo", "template_g68y533", emailParams).then(
+            function (response) {
+              // Success: Update label and hide form elements
+              const label = document.querySelector("label[for='email']");
+              const emailInput = document.getElementById("email");
+              const submitButton =
+                emailInput.parentElement.querySelector(".submit-button");
+
+              // Update label with success message
+              label.innerHTML = `
           <span style="
             color: #4CAF50;
             font-weight: bold;
@@ -381,16 +400,16 @@
             ✅ Received! Look out for an email soon!
           </span>
         `;
-        
-        // Hide form elements
-        emailInput.style.display = "none";
-        submitButton.style.display = "none";
-      },
-      function (error) {
-        alert("FAILED...", error);
-      }
-    );
-  });
+
+              // Hide form elements
+              emailInput.style.display = "none";
+              submitButton.style.display = "none";
+            },
+            function (error) {
+              alert("FAILED...", error);
+            }
+          );
+        });
     </script>
     <script>
       mapboxgl.accessToken =
