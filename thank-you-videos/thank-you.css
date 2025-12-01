@@ -568,7 +568,7 @@ button:active {
     height: 100%;
   }
   .sub-section.cols-1 {
-  max-width: 90vw;
+  /* max-width: 90vw; */
   /* display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: auto;
