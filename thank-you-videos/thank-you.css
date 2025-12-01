@@ -1,6 +1,7 @@
 :root {
   --color-highlight: #efc807;
   --color-background: #09062d;
+  --color-blue-tone: #272446;
   --color-alert: #d7263d;
 }
 
@@ -96,7 +97,7 @@ span.highlight {
 .flex-row h3 {
   margin: 0;
 }
-svg {
+.icon > svg {
   /* For inline SVGs - changes fill color */
   fill: var(--color-highlight);
 
@@ -225,6 +226,7 @@ section#above-the-fold {
     "form price"
     "footer footer";
 }
+
 footer,
 .section-footer {
   background-color: var(--color-highlight);
@@ -251,6 +253,8 @@ footer {
 #heading {
   grid-area: heading;
   z-index: 2;
+  text-wrap: balanced;
+  max-width: 700px;
 }
 #heading h1 {
   font-size: 3rem;
@@ -265,6 +269,7 @@ footer {
   color: var(--color-highlight);
   font-size: 3.75rem;
   line-height: 1;
+  display: block;
 }
 #donor-image-container {
   position: absolute;
@@ -289,6 +294,9 @@ button.buy-now {
     rgba(215, 38, 61, 0.05) -25px 25px;
   transform: translateY(0);
   transition: all 0.1s ease;
+  position: fixed;
+  top: 5vw;
+  right: 5vw;
 }
 
 button.buy-now:hover {
@@ -299,11 +307,6 @@ button.buy-now:hover {
 button.buy-now:active {
   box-shadow: 0 2px 0 #c5a500, 0 3px 4px rgba(0, 0, 0, 0.2);
   transform: translateY(4px);
-}
-button.button-fixed {
-  position: fixed;
-  top: 5vw;
-  right: 5vw;
 }
 button.button-dark {
   background-color: var(--color-background);
@@ -399,6 +402,7 @@ button.form-submit {
   width: 80%;
 } */
 #price-container {
+  background-color: transparent;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -410,7 +414,7 @@ button.form-submit {
 }
 #price {
   position: relative;
-  /* background-color: var(--color-background); */
+  background-color: transparent;
   z-index: 3;
   border-radius: 50%;
   padding: 1rem;
@@ -422,7 +426,18 @@ button.form-submit {
   align-items: center;
   margin-right: -4rem;
   margin-bottom: -7rem;
-  background-image: url("assets/price-medal.svg");
+}
+#price > svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  /* stroke: orange;
+  stroke-width: 3px; */
+  fill: var(--color-blue-tone);
+  z-index: -10;
 }
 #price > span {
   display: block;
@@ -451,4 +466,113 @@ button:active {
     padding: 10px 20px;
     font-size: 0.9rem;
   }
+}
+@media (max-width: 500px) {
+  button {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
+  .sub-section.cols-2 {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+    grid-template-areas:
+      "text"
+      "image";
+    gap: 2rem;
+    max-width: 90vw;
+  }
+  #heading {
+    padding: 1rem;
+    z-index: 10;
+  }
+  #form {
+    padding: 1rem;
+  }
+  .input-container {
+    flex-direction: column;
+  }
+  #heading h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    font-style: italic;
+    line-height: 1.2;
+    text-align: left;
+    margin: 0;
+    text-wrap: pretty;
+  }
+  #heading h1 > span {
+    color: var(--color-highlight);
+    font-size: 2rem;
+    line-height: 1;
+  }
+  #form {
+    margin: 0;
+  }
+  #price-container {
+    margin-top: -3rem;
+    margin-bottom: -3rem;
+    display: flex;
+    flex-direction: column;
+    justify-items: start;
+    align-items: end;
+  }
+  #price {
+    margin: 0;
+    width: 17rem;
+    height: 17rem;
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+  }
+  .section-header > h2 {
+    font-size: 2rem;
+  }
+  section#above-the-fold {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    max-width: 100vw;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto auto auto;
+    grid-template-areas:
+      "heading"
+      "price"
+      "buy-button"
+      "form"
+      "footer";
+  }
+  button.form-submit {
+    padding: 0;
+  }
+  input#email {
+    margin: 0;
+  }
+  #form {
+    padding: 1rem;
+  }
+  .section-footer > span {
+    font-size: 0.9rem;
+  }
+  button.buy-now {
+    grid-area: buy-button;
+    position: static;
+    align-self: start;
+    justify-self: center;
+  }
+  .media-container {
+    position: relative;
+    width: 80vw;
+    height: 100%;
+  }
+  .sub-section.cols-1 {
+  max-width: 90vw;
+  /* display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto;
+  gap: 2rem;
+  max-width: 90vw; */
+}
 }
