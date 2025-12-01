@@ -564,15 +564,15 @@ button:active {
   }
   .media-container {
     position: relative;
-    width: 80vw;
-    height: 100%;
+    width: 100%;
+    height: 60vh;
   }
   .sub-section.cols-1 {
-  /* max-width: 90vw; */
-  /* display: grid;
+    /* max-width: 90vw; */
+    /* display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: auto;
   gap: 2rem;
   max-width: 90vw; */
-}
+  }
 }
