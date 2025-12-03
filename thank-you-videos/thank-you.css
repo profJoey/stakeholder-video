@@ -480,7 +480,8 @@ button:active {
       "text"
       "image";
     gap: 2rem;
-    max-width: 90vw;
+    width: 100%;
+    max-width: 100vw;
   }
   #heading {
     padding: 1rem;
@@ -567,6 +568,7 @@ button:active {
     width: 80%;
     height: 60dvh;
     max-height: 60dvh;
+    justify-self: center;
   }
   .sub-section.cols-1 {
     /* max-width: 90vw; */
