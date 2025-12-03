@@ -131,7 +131,7 @@ svg path {
 .media-container {
   position: relative;
   width: 100%;
-  height: 80vh;
+  height: 80dvh;
   margin: 0;
   margin-left: 0;
   /* aspect-ratio: 9 / 16; */
@@ -564,8 +564,8 @@ button:active {
   }
   .media-container {
     position: relative;
-    width: 100%;
-    height: auto;
+    width: 80%;
+    height: 60dvh;
     max-height: 60dvh;
   }
   .sub-section.cols-1 {
