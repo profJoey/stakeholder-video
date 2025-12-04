@@ -545,6 +545,9 @@ button:active {
       "form"
       "footer";
   }
+  #form {
+    grid-area: 
+  }
   button.form-submit {
     padding: 0;
   }
